@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { makeStyles, withTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -32,14 +32,14 @@ const Movie = ({ movie }) => {
             <Card className={classes.root} >
                 <CardActionArea >
                     <CardContent >
-                        <Link to={`detail/${movie.show.id}`}>
+                        <Link to={`/detail/${movie.show.id}`}>
                             <Typography className={classes.text} variant="h5" component="h2">
                                 {movie.show.name}
                             </Typography>
                         </Link>
 
                     </CardContent>
-                    <Link to={`detail/${movie.show.id}`}>
+                    <Link to={`/detail/${movie.show.id}`}>
                         <CardMedia
                             className={classes.media}
                             image={movie.show.image === null ? DEFAULT_IMAGE : movie.show.image.original}

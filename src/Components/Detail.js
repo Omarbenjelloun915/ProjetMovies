@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,28 +10,50 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
     table: {
-        minWidth: 650,
+        maxWidth: 550,
+        margin: 10
     },
 });
 
 function createData(key, value) {
     return { key, value };
 }
+let rows = [];
 
-const Detail = (match) => {
-    const rows = [];
-    // const [movies, setMovies] = useState([]);
+const Detail = ({ match }) => {
 
+    const [rowss, setrowss] = useState([]);
     useEffect(() => {
-        fetch(`https://api.tvmaze.com/lookup/shows?tvrage=${match.params.id}`)
+        fetch(`https://api.tvmaze.com/shows/${match.params.id}`)
             .then(response => response.json())
             .then(response => {
                 if (response) {
-                    rows.push(createData('name', response.name),
-                        createData('url', response.url), createData('type', response.type), createData('language', response.language), createData('genre', response.genre), createData('status', response.status), createData('runtime', response.runtime), createData('premiered', response.premiered), createData('officialSite', response.officialSite), createData('schedule', response.schedule), createData('rating', response.rating), createData('weight', response.weight), createData('network', response.network), createData('webChannel', response.webChannel), createData('country', response.country), createData('externals', response.externals), createData('image', response.image), createData('summary', response.summary), createData('updated', response.updated), createData('_links', response._links), createData('previousepisode', response.previousepisode))
+                    setrowss(response)
+                    rows = []
+                    // rows.push(createData('name', response.name),
+                    //     createData('url', response.url),
+                    //     createData('type', response.type),
+                    //     createData('language', response.language),
+                    //     createData('genre', response.genre),
+                    //     createData('status', response.status),
+                    //     createData('runtime', response.runtime),
+                    //     createData('premiered', response.premiered),
+                    //     createData('officialSite', response.officialSite),
+                    //     createData('schedule', response.schedule.time + ' ' + response.schedule.days),
+                    //     createData('rating', response.rating.average),
+                    //     createData('weight', response.weight),
+                    //     createData('network', response.network.name),
+                    //     createData('webChannel', response.webChannel.name),
+                    //     createData('country', response.country),
+                    //     createData('externals', response.externals.tvrage),
+                    //     createData('image', response.image.original),
+                    //     createData('updated', response.updated),
+                    //     createData('_links', response._links.self.href)
+                    // )
                 }
+                console.log(rowss)
             });
-    }, [match.params.id, rows]);
+    }, [match.params.id, rowss]);
 
 
     const classes = useStyles();
@@ -41,8 +63,8 @@ const Detail = (match) => {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
+                        <TableCell>Key</TableCell>
+                        <TableCell align="right">Value</TableCell>
 
                     </TableRow>
                 </TableHead>
@@ -59,6 +81,5 @@ const Detail = (match) => {
             </Table>
         </TableContainer>
     );
-
 };
 export default Detail;
