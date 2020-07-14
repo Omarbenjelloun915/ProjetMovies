@@ -1,4 +1,4 @@
-Ce projet permet de rechercher des films.
+Ce projet est fait avec ReactJs permet de rechercher des films et afficher leurs informations.
 
 Le film recherché par défaut est "breaking".
 
