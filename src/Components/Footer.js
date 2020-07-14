@@ -8,6 +8,7 @@ const Footer = (props) => {
             <img
                 width="200"
                 alt="logo"
+                backgroundcolor="white"
                 src="https://nobo.life/img/nobo/logo/logo-popup-250x150.png"
             />
         </footer>

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import "./Detail.css"
+
 
 function isNull(object, item) {
     if (object !== null && object !== undefined) {
@@ -7,7 +9,9 @@ function isNull(object, item) {
         return "n'est pas disponible"
     }
 }
+
 let rows = []
+let image
 
 const Detail = ({ match }) => {
     const [data, setData] = useState([]);
@@ -19,33 +23,90 @@ const Detail = ({ match }) => {
                 if (response) {
                     rows = [response]
                     setData(rows)
+                    image = `${isNull(response.image.medium)}`
                     console.log(rows)
                 }
             });
     }, [match.params.id]);
 
     return (
-        <div>
-            <ul>
+        <div className="body">
+            <div className="table-title">
+                <h3>Information</h3>
+            </div>
+            <table className="table-fill">
+                <thead>
+                    <tr>
+                        <th className="text-left">Key</th>
+                        <th className="text-left">Value</th>
+                    </tr>
+                </thead>
                 {data.map(item => (
-                    <li key={item.id}>
-                        <p> Name : {isNull(item.name)}</p>
-                        <p> Url : {isNull(item.url)}</p>
-                        <p> type : {isNull(item.type)}</p>
-                        <p> language : {isNull(item.language)}</p>
-                        <p> genre : {isNull(item.genre)}</p>
-                        <p> status : {isNull(item.status)}</p>
-                        <p> runtime : {isNull(item.runtime)}</p>
-                        <p> premiered : {isNull(item.premiered)}</p>
-                        <p> Schedule : {isNull(item.schedule.time)} {isNull(item.schedule.days)}</p>
-                        <p> Rating : {isNull(item.rating.average)}</p>
-                        <p> Weight : {isNull(item.weight)}</p>
-                        <p> externals : {isNull(item.externals.tvrage)}</p>
-                        <p> updated : {isNull(item.updated)}</p>
-                        <p> Links : {isNull(item._links.self.href)}</p>
-                    </li>
+                    <tbody className="table-hover" key={item.id}>
+                        <tr>
+                            <td className="text-left">Name</td>
+                            <td className="text-left">{isNull(item.name)}</td>
+                        </tr>
+                        {/* <tr>
+                            <td className="text-left">Image</td>
+                            <td className="text-left"><img alt="" src="" id="imagebox" ></img></td>
+                        </tr> */}
+                        <tr>
+                            <td className="text-left">Url</td>
+                            <td className="text-left">{isNull(item.url)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">type</td>
+                            <td className="text-left">{isNull(item.type)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">language</td>
+                            <td className="text-left">{isNull(item.language)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">genre</td>
+                            <td className="text-left">{isNull(item.genre)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">status</td>
+                            <td className="text-left">{isNull(item.status)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">runtime</td>
+                            <td className="text-left">{isNull(item.runtime)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">premiered</td>
+                            <td className="text-left">{isNull(item.premiered)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">Schedule</td>
+                            <td className="text-left">{isNull(item.schedule.time)} {isNull(item.schedule.days)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">Rating</td>
+                            <td className="text-left">{isNull(item.rating.average)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">Weight</td>
+                            <td className="text-left">{isNull(item.weight)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">externals</td>
+                            <td className="text-left">{isNull(item.externals.tvrage)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">updated</td>
+                            <td className="text-left">{isNull(item.updated)}</td>
+                        </tr>
+                        <tr>
+                            <td className="text-left">Links</td>
+                            <td className="text-left">{isNull(item._links.self.href)}</td>
+                        </tr>
+                    </tbody>
                 ))}
-            </ul>
+            </table>
+
         </div>
     );
 }

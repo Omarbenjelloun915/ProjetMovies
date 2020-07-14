@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import Footer from "./Footer";
 import Movie from "./Movie";
 import Search from "./Search";
 
@@ -35,7 +33,6 @@ const Landing = () => {
 
     return (
         <div className="App" >
-            <Header text="Movies" />
             <Search search={search} />
             <div className="movies">
                 {errorMessage ? (
@@ -47,7 +44,6 @@ const Landing = () => {
                     )}
             </div>
 
-            <Footer text="Réalisé par Omar Benjelloun" secondText="mail: omar.benjelloun@etu.enseeiht.fr" />
         </div >
 
 
