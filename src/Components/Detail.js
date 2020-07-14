@@ -23,8 +23,7 @@ const Detail = ({ match }) => {
                 if (response) {
                     rows = [response]
                     setData(rows)
-                    image = `${isNull(response.image.medium)}`
-                    console.log(rows)
+                    // console.log(rows)
                 }
             });
     }, [match.params.id]);
