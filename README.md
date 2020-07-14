@@ -2,7 +2,7 @@ Ce projet permet de rechercher des films.
 
 Le film recherché par défaut est "breaking".
 
-Je n'ai pas eu le temps de faire le design de la deuxième page avec material ui car j'ai commencé le projet un peu tard, mais par contre c'est fait pour la première page.
+L'api utilisé : http://www.tvmaze.com/api
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
